@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblSubTitle = new System.Windows.Forms.Label();
             this.txtCodigoDeBarras = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.btnGerarRelatorio = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnZerarContagem = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.dgvProdutos = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.dgvProdutos = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,30 +63,30 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblTitle.Location = new System.Drawing.Point(43, 46);
+            this.lblTitle.Location = new System.Drawing.Point(42, 42);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(633, 55);
+            this.lblTitle.Size = new System.Drawing.Size(588, 65);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "CONTAGEM DO ESTOQUE";
             // 
             // lblSubTitle
             // 
             this.lblSubTitle.AutoSize = true;
-            this.lblSubTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubTitle.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
-            this.lblSubTitle.Location = new System.Drawing.Point(67, 113);
+            this.lblSubTitle.Location = new System.Drawing.Point(58, 122);
             this.lblSubTitle.Name = "lblSubTitle";
-            this.lblSubTitle.Size = new System.Drawing.Size(550, 25);
+            this.lblSubTitle.Size = new System.Drawing.Size(540, 30);
             this.lblSubTitle.TabIndex = 1;
             this.lblSubTitle.Text = "Leia o código do produto com o cursor no campo abaixo";
             // 
             // txtCodigoDeBarras
             // 
-            this.txtCodigoDeBarras.Location = new System.Drawing.Point(53, 172);
+            this.txtCodigoDeBarras.Location = new System.Drawing.Point(31, 172);
             this.txtCodigoDeBarras.Name = "txtCodigoDeBarras";
-            this.txtCodigoDeBarras.Size = new System.Drawing.Size(611, 43);
+            this.txtCodigoDeBarras.Size = new System.Drawing.Size(612, 43);
             this.txtCodigoDeBarras.StateActive.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
             this.txtCodigoDeBarras.StateActive.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
             this.txtCodigoDeBarras.StateActive.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -116,7 +118,7 @@
             // 
             // btnGerarRelatorio
             // 
-            this.btnGerarRelatorio.Location = new System.Drawing.Point(53, 259);
+            this.btnGerarRelatorio.Location = new System.Drawing.Point(41, 248);
             this.btnGerarRelatorio.Name = "btnGerarRelatorio";
             this.btnGerarRelatorio.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
             this.btnGerarRelatorio.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(38)))), ((int)(((byte)(127)))));
@@ -166,7 +168,7 @@
             // 
             // btnZerarContagem
             // 
-            this.btnZerarContagem.Location = new System.Drawing.Point(335, 259);
+            this.btnZerarContagem.Location = new System.Drawing.Point(316, 248);
             this.btnZerarContagem.Name = "btnZerarContagem";
             this.btnZerarContagem.OverrideDefault.Back.Color1 = System.Drawing.Color.White;
             this.btnZerarContagem.OverrideDefault.Back.Color2 = System.Drawing.Color.White;
@@ -237,36 +239,44 @@
             // 
             // dgvProdutos
             // 
-            this.dgvProdutos.AllowUserToOrderColumns = true;
-            this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProdutos.Location = new System.Drawing.Point(53, 347);
+            this.dgvProdutos.AllowUserToAddRows = false;
+            this.dgvProdutos.AllowUserToDeleteRows = false;
+            this.dgvProdutos.AllowUserToResizeColumns = false;
+            this.dgvProdutos.AllowUserToResizeRows = false;
+            this.dgvProdutos.BackgroundColor = System.Drawing.Color.White;
+            this.dgvProdutos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvProdutos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvProdutos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvProdutos.ColumnHeadersHeight = 54;
+            this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvProdutos.EnableHeadersVisualStyles = false;
+            this.dgvProdutos.GridColor = System.Drawing.Color.Snow;
+            this.dgvProdutos.Location = new System.Drawing.Point(31, 326);
+            this.dgvProdutos.Margin = new System.Windows.Forms.Padding(0);
             this.dgvProdutos.MultiSelect = false;
             this.dgvProdutos.Name = "dgvProdutos";
+            this.dgvProdutos.ReadOnly = true;
+            this.dgvProdutos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProdutos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvProdutos.RowHeadersVisible = false;
+            this.dgvProdutos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProdutos.Size = new System.Drawing.Size(611, 271);
-            this.dgvProdutos.StateCommon.Background.Color1 = System.Drawing.Color.LightGray;
-            this.dgvProdutos.StateCommon.Background.Color2 = System.Drawing.Color.LightGray;
-            this.dgvProdutos.StateCommon.BackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
-            this.dgvProdutos.StateCommon.DataCell.Back.Color1 = System.Drawing.Color.White;
-            this.dgvProdutos.StateCommon.DataCell.Back.Color2 = System.Drawing.Color.White;
-            this.dgvProdutos.StateCommon.DataCell.Border.Color1 = System.Drawing.Color.LightGray;
-            this.dgvProdutos.StateCommon.DataCell.Border.Color2 = System.Drawing.Color.LightGray;
-            this.dgvProdutos.StateCommon.DataCell.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.dgvProdutos.StateCommon.DataCell.Border.Rounding = 10;
-            this.dgvProdutos.StateCommon.DataCell.Border.Width = 1;
-            this.dgvProdutos.StateCommon.DataCell.Content.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dgvProdutos.StateCommon.DataCell.Content.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dgvProdutos.StateCommon.DataCell.Content.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvProdutos.StateCommon.HeaderColumn.Back.Color1 = System.Drawing.Color.WhiteSmoke;
-            this.dgvProdutos.StateCommon.HeaderColumn.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.dgvProdutos.StateCommon.HeaderColumn.Back.ColorAngle = 90F;
-            this.dgvProdutos.StateCommon.HeaderColumn.Content.Color1 = System.Drawing.Color.DimGray;
-            this.dgvProdutos.StateCommon.HeaderColumn.Content.Color2 = System.Drawing.Color.DimGray;
-            this.dgvProdutos.StateCommon.HeaderColumn.Content.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvProdutos.StateSelected.DataCell.Back.Color1 = System.Drawing.Color.LightBlue;
-            this.dgvProdutos.StateSelected.DataCell.Back.Color2 = System.Drawing.Color.LightBlue;
+            this.dgvProdutos.Size = new System.Drawing.Size(612, 284);
             this.dgvProdutos.TabIndex = 5;
             // 
             // FrmMenuPrincipal
@@ -311,7 +321,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtCodigoDeBarras;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnGerarRelatorio;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnZerarContagem;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvProdutos;
+        private System.Windows.Forms.DataGridView dgvProdutos;
     }
 }
 

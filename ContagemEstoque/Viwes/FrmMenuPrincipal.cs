@@ -97,10 +97,10 @@ namespace ContagemEstoque
             dgvProdutos.AllowUserToAddRows = false;
             dgvProdutos.AllowUserToResizeRows = false;
             dgvProdutos.RowHeadersVisible = false;
-
+            dgvProdutos.DefaultCellStyle.Font = new Font("Segoe UI", 12);
+            dgvProdutos.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
 
         }
-
 
     }
 }
