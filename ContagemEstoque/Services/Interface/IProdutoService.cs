@@ -7,5 +7,7 @@ namespace ContagemEstoque.Services.Interface
     {
         ProdutoModel TratarCodigoBarras(string codigoLido, out string messagemErro, int LastId);
         ProdutoModel ConsultarProduto(List<ProdutoModel> produtos, ProdutoModel produto);
+        ProdutoModel RemoverProduto(List<ProdutoModel> produtos, int id);
     }
 }
+

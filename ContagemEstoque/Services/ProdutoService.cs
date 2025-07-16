@@ -28,6 +28,32 @@ namespace ContagemEstoque.Services
             return produtoExistente;
         }
 
+        public ProdutoModel RemoverProduto(List<ProdutoModel> produtos, int id)
+        {
+            var produtoExistente = produtos.FirstOrDefault(p => p.Id == id);
+
+            if (produtoExistente != null)
+            {
+                produtos.Remove(produtoExistente);
+                RenumerarContador(produtos);
+            }
+
+            return produtoExistente;
+        }
+        private void RenumerarContador(List<ProdutoModel> produtos)
+        {
+            if (produtos.Count > 0)
+            {
+                int renumerador = 1;
+
+                foreach (var produto in produtos)
+                {
+                    produto.Id = renumerador;
+                    renumerador++;
+                }
+            }
+        }
+
         private bool VerificarProduto(string[] produto, out string erro)
         {
             erro = null;

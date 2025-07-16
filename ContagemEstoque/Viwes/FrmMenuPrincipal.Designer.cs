@@ -38,6 +38,7 @@
             this.btnGerarRelatorio = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnZerarContagem = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.dgvProdutos = new System.Windows.Forms.DataGridView();
+            this.btnExcluir = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -236,6 +237,7 @@
             this.btnZerarContagem.StateTracking.Content.ShortText.Color2 = System.Drawing.Color.White;
             this.btnZerarContagem.TabIndex = 4;
             this.btnZerarContagem.Values.Text = "ZERAR CONTAGEM";
+            this.btnZerarContagem.Click += new System.EventHandler(this.ZerarContagem);
             // 
             // dgvProdutos
             // 
@@ -243,7 +245,7 @@
             this.dgvProdutos.AllowUserToDeleteRows = false;
             this.dgvProdutos.AllowUserToResizeColumns = false;
             this.dgvProdutos.AllowUserToResizeRows = false;
-            this.dgvProdutos.BackgroundColor = System.Drawing.Color.White;
+            this.dgvProdutos.BackgroundColor = System.Drawing.Color.DarkGray;
             this.dgvProdutos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProdutos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvProdutos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -251,15 +253,15 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProdutos.ColumnHeadersHeight = 54;
             this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvProdutos.EnableHeadersVisualStyles = false;
             this.dgvProdutos.GridColor = System.Drawing.Color.Snow;
-            this.dgvProdutos.Location = new System.Drawing.Point(31, 326);
+            this.dgvProdutos.Location = new System.Drawing.Point(18, 316);
             this.dgvProdutos.Margin = new System.Windows.Forms.Padding(0);
             this.dgvProdutos.MultiSelect = false;
             this.dgvProdutos.Name = "dgvProdutos";
@@ -276,8 +278,59 @@
             this.dgvProdutos.RowHeadersVisible = false;
             this.dgvProdutos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProdutos.Size = new System.Drawing.Size(612, 284);
+            this.dgvProdutos.Size = new System.Drawing.Size(612, 273);
             this.dgvProdutos.TabIndex = 5;
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Location = new System.Drawing.Point(18, 603);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
+            this.btnExcluir.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(38)))), ((int)(((byte)(127)))));
+            this.btnExcluir.OverrideDefault.Back.ColorAngle = 5F;
+            this.btnExcluir.Size = new System.Drawing.Size(192, 53);
+            this.btnExcluir.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
+            this.btnExcluir.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(38)))), ((int)(((byte)(127)))));
+            this.btnExcluir.StateCommon.Back.ColorAngle = 5F;
+            this.btnExcluir.StateCommon.Back.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.ExpertCheckedTracking;
+            this.btnExcluir.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnExcluir.StateCommon.Border.Rounding = 20;
+            this.btnExcluir.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnExcluir.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnExcluir.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluir.StateDisabled.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
+            this.btnExcluir.StateDisabled.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(38)))), ((int)(((byte)(127)))));
+            this.btnExcluir.StateDisabled.Back.ColorAngle = 5F;
+            this.btnExcluir.StateDisabled.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnExcluir.StateDisabled.Border.Rounding = 20;
+            this.btnExcluir.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
+            this.btnExcluir.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(38)))), ((int)(((byte)(127)))));
+            this.btnExcluir.StateNormal.Back.ColorAngle = 5F;
+            this.btnExcluir.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
+            this.btnExcluir.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(38)))), ((int)(((byte)(127)))));
+            this.btnExcluir.StatePressed.Back.ColorAngle = 5F;
+            this.btnExcluir.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnExcluir.StatePressed.Border.Rounding = 20;
+            this.btnExcluir.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnExcluir.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnExcluir.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(38)))), ((int)(((byte)(127)))));
+            this.btnExcluir.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
+            this.btnExcluir.StateTracking.Back.ColorAngle = 5F;
+            this.btnExcluir.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btnExcluir.StateTracking.Border.Rounding = 20;
+            this.btnExcluir.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.btnExcluir.StateTracking.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.btnExcluir.TabIndex = 6;
+            this.btnExcluir.Values.Text = "Excluir Produto";
+            this.btnExcluir.Click += new System.EventHandler(this.ExcluirProduto);
             // 
             // FrmMenuPrincipal
             // 
@@ -285,6 +338,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1294, 665);
+            this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.dgvProdutos);
             this.Controls.Add(this.btnZerarContagem);
             this.Controls.Add(this.btnGerarRelatorio);
@@ -322,6 +376,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnGerarRelatorio;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnZerarContagem;
         private System.Windows.Forms.DataGridView dgvProdutos;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnExcluir;
     }
 }
 
