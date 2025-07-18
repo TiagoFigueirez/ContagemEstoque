@@ -18,10 +18,13 @@ namespace ContagemEstoque
 
         //interfaces
         private readonly IProdutoService _produtoService;
+        private readonly IExcelService _excelService;
+
         public FrmMenuPrincipal()
         {
             InitializeComponent();
             _produtoService = new ProdutoService();
+            _excelService = new ExcelService();
         }
 
         private void FrmMenuPrincipal_Load(object sender, System.EventArgs e)
@@ -33,7 +36,7 @@ namespace ContagemEstoque
         {
             try
             {
-                codigo += e.KeyChar;
+                
 
                 if (e.KeyChar == (char)13)
                 {
@@ -73,8 +76,19 @@ namespace ContagemEstoque
                 txtCodigoDeBarras.Clear();
                 txtCodigoDeBarras.Focus();
             }
-            
+
+            codigo += e.KeyChar;
+
         }
+        private void GerarRelatorio(object sender, EventArgs e)
+        {
+            string arquivoExtrairDados = FileHelper.SelecionarArquivo();
+
+            var produtosRelatorio = _excelService.ExtrairDadosExcel(arquivoExtrairDados);
+
+
+        }
+
         private void ZerarContagem(object sender, EventArgs e)
         {
             if(produtoContados.Count > 0)
@@ -159,5 +173,6 @@ namespace ContagemEstoque
             dgvProdutos.DefaultCellStyle.Font = new Font("Segoe UI", 12);
             dgvProdutos.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
         }
+
     }
 }

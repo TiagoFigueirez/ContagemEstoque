@@ -114,8 +114,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\FormatarDataTable.cs" />
+    <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Models\ProdutoModel.cs" />
     <Compile Include="Services\ExcelService.cs" />
+    <Compile Include="Services\Interface\IExcelService.cs" />
     <Compile Include="Services\Interface\IProdutoService.cs" />
     <Compile Include="Services\ProdutoService.cs" />
     <Compile Include="Viwes\FrmMenuPrincipal.cs">
