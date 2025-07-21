@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿
+using System.IO;
+using System.Windows.Forms;
 
 namespace ContagemEstoque.Helpers
 {
@@ -8,7 +10,7 @@ namespace ContagemEstoque.Helpers
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
-                Title="Selecionar arquivo",
+                Title= "Selecionar arquivo",
                 Filter = "Arquivos Excel (*.xlsx;*.xls)|*.xlsx;*.xls|Todos os arquivos (*.*)|*.*"
             };
 
@@ -18,6 +20,25 @@ namespace ContagemEstoque.Helpers
             }
 
             return null;
+        }
+
+        public static string SelecionarDiretorio(string fileName)
+        {
+            using(FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
+            {
+                DialogResult res = folderBrowserDialog.ShowDialog();
+
+                if (res == DialogResult.OK)
+                {
+                    string diretorio = folderBrowserDialog.SelectedPath;
+
+                    return Path.Combine(diretorio, fileName);
+                }
+
+                return null;
+
+            }
+
         }
     }
 }

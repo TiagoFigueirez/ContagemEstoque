@@ -5,6 +5,6 @@ namespace ContagemEstoque.Services.Interface
 {
     public interface IExcelService
     {
-        List<ProdutoModel> ExtrairDadosExcel(string caminhoArq);
+        void ExtrairDadosExcel(string caminhoArq, List<ProdutoModel> produtos);
     }
 }

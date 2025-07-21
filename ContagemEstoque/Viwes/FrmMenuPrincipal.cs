@@ -5,8 +5,6 @@ using ContagemEstoque.Services;
 using ContagemEstoque.Services.Interface;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace ContagemEstoque
@@ -29,15 +27,13 @@ namespace ContagemEstoque
 
         private void FrmMenuPrincipal_Load(object sender, System.EventArgs e)
         {
-            FormatarGridView();
+            GridViewHelper.FormatarGridView(dgvProdutos);
         }
 
         private void LerCodigoBarras(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
             try
             {
-                
-
                 if (e.KeyChar == (char)13)
                 {
                     var produto = _produtoService.TratarCodigoBarras(codigo, out string erro, produtoContados.Count);
@@ -52,14 +48,13 @@ namespace ContagemEstoque
                         if (produtoExistente == null)
                         {
                             produtoContados.Add(produto);
-                            CarregarGridView();
+                            GridViewHelper.CarregarGridView(dgvProdutos, produtoContados);
                         }
                         else
                         {
                             produtoExistente.Quantidade++;
-                            CarregarGridView();
+                            GridViewHelper.CarregarGridView(dgvProdutos, produtoContados);
                         }
-
                     }
                     else
                     {
@@ -71,7 +66,7 @@ namespace ContagemEstoque
             }
             catch
             {
-                MessageBox.Show("Falha ao ler o código tente novamente !", "Atenção", 
+                MessageBox.Show("Falha ao ler o código tente novamente !", "Atenção",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtCodigoDeBarras.Clear();
                 txtCodigoDeBarras.Focus();
@@ -84,14 +79,13 @@ namespace ContagemEstoque
         {
             string arquivoExtrairDados = FileHelper.SelecionarArquivo();
 
-            var produtosRelatorio = _excelService.ExtrairDadosExcel(arquivoExtrairDados);
-
+            _excelService.ExtrairDadosExcel(arquivoExtrairDados, produtoContados);
 
         }
 
         private void ZerarContagem(object sender, EventArgs e)
         {
-            if(produtoContados.Count > 0)
+            if (produtoContados.Count > 0)
             {
                 DialogResult result = MessageBox.Show("Deseja realmente remover zerar a lista ?",
                                                      "Atenção", MessageBoxButtons.YesNo);
@@ -104,13 +98,13 @@ namespace ContagemEstoque
                 }
             }
         }
-     
+
         private void ExcluirProduto(object sender, System.EventArgs e)
         {
             if (dgvProdutos.SelectedCells.Count > 0)
             {
                 int id = Convert.ToInt32(dgvProdutos.SelectedCells[0].Value);
-                
+
                 DialogResult result = MessageBox.Show("Deseja realmente remover o item?",
                                                      "Atenção", MessageBoxButtons.YesNo);
 
@@ -120,8 +114,8 @@ namespace ContagemEstoque
 
                     if (produtoExcluido != null)
                     {
-                        MessageBox.Show("Produto Excluido !", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information); 
-                        CarregarGridView();
+                        MessageBox.Show("Produto Excluido !", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        GridViewHelper.CarregarGridView(dgvProdutos, produtoContados);
                         txtCodigoDeBarras.Focus();
                     }
                     else
@@ -132,46 +126,8 @@ namespace ContagemEstoque
                 else
                 {
                     txtCodigoDeBarras.Focus();
-                }                                                                
-            }
-        }
-
-        private void CarregarGridView()
-        {
-            if (produtoContados.Count > 0)
-            {
-                int ultimaLinha;
-
-                DataTable tabela = FormatarDataTable.CriarTabela(produtoContados);
-
-                dgvProdutos.DataSource = tabela;
-
-                ultimaLinha = dgvProdutos.Rows.Count - 1;
-
-                if (ultimaLinha > 0)
-                {
-                    dgvProdutos.FirstDisplayedScrollingRowIndex = ultimaLinha;
-                    dgvProdutos.Rows[ultimaLinha].Selected = true;
-                    dgvProdutos.CurrentCell = dgvProdutos.Rows[ultimaLinha].Cells[0];
-
-                }
-
-                foreach (DataGridViewColumn column in dgvProdutos.Columns)
-                {
-                    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
             }
-        }
-
-        private void FormatarGridView()
-        {
-            dgvProdutos.EnableHeadersVisualStyles = false;
-            dgvProdutos.BorderStyle = BorderStyle.None;
-            dgvProdutos.AllowUserToAddRows = false;
-            dgvProdutos.AllowUserToResizeRows = false;
-            dgvProdutos.RowHeadersVisible = false;
-            dgvProdutos.DefaultCellStyle.Font = new Font("Segoe UI", 12);
-            dgvProdutos.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
         }
 
     }
