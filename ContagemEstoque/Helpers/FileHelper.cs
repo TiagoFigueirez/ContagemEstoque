@@ -1,4 +1,4 @@
-﻿
+﻿using System;
 using System.IO;
 using System.Windows.Forms;
 
@@ -6,6 +6,8 @@ namespace ContagemEstoque.Helpers
 {
     public static class FileHelper
     {
+        private static readonly string filePath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\ContagemEstoque";
+
         public static string SelecionarArquivo()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
@@ -36,9 +38,35 @@ namespace ContagemEstoque.Helpers
                 }
 
                 return null;
-
             }
+        }
 
+        public static bool Salvar()
+        {
+            string filePathSave = SelecionarArquivo();
+
+            try
+            {
+                using (StreamWriter sw = new StreamWriter(filePath))
+                {
+                    sw.WriteLine(filePathSave);
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+                           
+        public static string CarregarArquivo()
+        {
+            if(!File.Exists(filePath))
+                return null;
+
+            string getFilePath = File.ReadAllText(filePath);
+
+            return getFilePath;
         }
     }
 }

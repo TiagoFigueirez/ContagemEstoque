@@ -3,8 +3,10 @@ using ContagemEstoque.Helpers;
 using ContagemEstoque.Models;
 using ContagemEstoque.Services;
 using ContagemEstoque.Services.Interface;
+using ContagemEstoque.Viwes;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ContagemEstoque
@@ -130,5 +132,10 @@ namespace ContagemEstoque
             }
         }
 
+        private void AbrirFrmFilePathSave(object sender, EventArgs e)
+        {
+            frmAddFilePathSave frmAddFilePathSave = new frmAddFilePathSave();
+            frmAddFilePathSave.ShowDialog();
+        }
     }
 }
