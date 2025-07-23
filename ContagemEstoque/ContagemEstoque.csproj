@@ -168,5 +168,8 @@
   <ItemGroup>
     <None Include="Resources\fileIcon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Checking boxes-amico.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

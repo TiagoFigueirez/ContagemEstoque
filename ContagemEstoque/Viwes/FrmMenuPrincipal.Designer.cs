@@ -39,8 +39,10 @@
             this.btnZerarContagem = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.dgvProdutos = new System.Windows.Forms.DataGridView();
             this.btnExcluir = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLoadFrmFilePathSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonPalette1
@@ -280,12 +282,12 @@
             this.dgvProdutos.RowHeadersVisible = false;
             this.dgvProdutos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProdutos.Size = new System.Drawing.Size(612, 273);
+            this.dgvProdutos.Size = new System.Drawing.Size(612, 282);
             this.dgvProdutos.TabIndex = 5;
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(18, 603);
+            this.btnExcluir.Location = new System.Drawing.Point(31, 612);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
             this.btnExcluir.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(38)))), ((int)(((byte)(127)))));
@@ -334,12 +336,23 @@
             this.btnExcluir.Values.Text = "EXCLUIR PRODUTO";
             this.btnExcluir.Click += new System.EventHandler(this.ExcluirProduto);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ContagemEstoque.Properties.Resources.Checking_boxes_amico;
+            this.pictureBox1.Location = new System.Drawing.Point(649, 42);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(633, 623);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.UseWaitCursor = true;
+            // 
             // btnLoadFrmFilePathSave
             // 
             this.btnLoadFrmFilePathSave.FlatAppearance.BorderSize = 0;
             this.btnLoadFrmFilePathSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLoadFrmFilePathSave.Image = global::ContagemEstoque.Properties.Resources.fileIcon;
-            this.btnLoadFrmFilePathSave.Location = new System.Drawing.Point(1211, 12);
+            this.btnLoadFrmFilePathSave.Location = new System.Drawing.Point(1212, 0);
             this.btnLoadFrmFilePathSave.Name = "btnLoadFrmFilePathSave";
             this.btnLoadFrmFilePathSave.Size = new System.Drawing.Size(46, 36);
             this.btnLoadFrmFilePathSave.TabIndex = 7;
@@ -353,6 +366,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1294, 665);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnLoadFrmFilePathSave);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.dgvProdutos);
@@ -378,6 +392,7 @@
             this.Text = "Contagem Estoque";
             this.Load += new System.EventHandler(this.FrmMenuPrincipal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -394,6 +409,7 @@
         private System.Windows.Forms.DataGridView dgvProdutos;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnExcluir;
         private System.Windows.Forms.Button btnLoadFrmFilePathSave;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

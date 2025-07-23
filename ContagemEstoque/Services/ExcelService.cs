@@ -5,6 +5,7 @@ using ContagemEstoque.Services.Interface;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 
 namespace ContagemEstoque.Services
@@ -64,7 +65,8 @@ namespace ContagemEstoque.Services
 
         private void GerarRelatorio(List<ProdutoModel> produtos)
         {
-            var caminhoArq = FileHelper.SelecionarDiretorio($"Relatorio_{DateTime.Today.ToString("yyyy-MM-dd")}.xlsx");
+            var caminhoArq = FileHelper.CarregarArquivo();
+            Path.Combine(caminhoArq, $"Relatorio_{DateTime.Today.ToString("yyyy-MM-dd")}.xlsx");
 
             using (var workbook = new XLWorkbook())
             {
