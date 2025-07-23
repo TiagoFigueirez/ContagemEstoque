@@ -27,7 +27,6 @@ namespace ContagemEstoque.Services
                 var indices = new Dictionary<string, int>
                 {
                     ["Produto"] = cabecalhos.IndexOf("Produto") + 1,
-                    ["Produto"] = cabecalhos.IndexOf("Produto") + 1,
                     ["Lote"] = cabecalhos.IndexOf("Lote") + 1,
                     ["Data Validad"] = cabecalhos.IndexOf("Data Validad") + 1,
                     ["Saldo 1a.U.M."] = cabecalhos.IndexOf("Saldo 1a.U.M.") + 1,
