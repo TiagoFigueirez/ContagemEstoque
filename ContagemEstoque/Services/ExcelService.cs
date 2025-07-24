@@ -134,7 +134,7 @@ namespace ContagemEstoque.Services
 
                 }
 
-                planilha.ColumnCount()
+                planilha.ColumnCount();
 
                 planilha.Columns().AdjustToContents();
                 workbook.SaveAs(arquivo);
