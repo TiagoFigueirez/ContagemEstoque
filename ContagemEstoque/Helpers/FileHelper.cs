@@ -87,9 +87,9 @@ namespace ContagemEstoque.Helpers
         {
             try
             {
-                string getFilePath = File.ReadAllText(filePath);
+                string getFilePath = File.ReadAllText(filePath).Trim();
 
-                if (getFilePath == "\r\n")
+                if (getFilePath == "")
                 {
                     return null;
                 }

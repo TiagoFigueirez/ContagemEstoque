@@ -6,7 +6,6 @@ using ContagemEstoque.Services.Interface;
 using ContagemEstoque.Viwes;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace ContagemEstoque
@@ -81,7 +80,7 @@ namespace ContagemEstoque
         {
             string arquivoExtrairDados = FileHelper.SelecionarArquivo();
 
-            _excelService.ExtrairDadosExcel(arquivoExtrairDados, produtoContados);
+            _excelService.ExtrairDadosEstoque(arquivoExtrairDados, produtoContados);
 
         }
 

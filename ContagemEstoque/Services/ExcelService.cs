@@ -14,58 +14,79 @@ namespace ContagemEstoque.Services
     {
         public List<ProdutoModel> produtosExtraidos = new List<ProdutoModel>();
 
-        public void ExtrairDadosExcel(string caminhoArq, List<ProdutoModel> produtos)
-        {           
-            using(var workbook = new XLWorkbook(caminhoArq))
+        public void ExtrairDadosEstoque(string caminhoArq, List<ProdutoModel> produtos)
+        {
+            
+            var mapeamento = new Dictionary<string, string>
             {
-                var planilha = workbook.Worksheet(2);
-                var cabecalhos = planilha.Row(2).
+                ["Codigo"] = "Produto",
+                ["Lote"] = "Lote",
+                ["Validade"] = "Data Validad",
+                ["Quantidade"] = "Saldo 1a.U.M."
+            };
+
+            produtosExtraidos = LerDados(caminhoArq, produtos, mapeamento, 2, 2);
+            GerarRelatorio(produtos, mapeamento, true);
+
+        }
+
+        private List<ProdutoModel> LerDados(string caminhoArq, List<ProdutoModel> produtos,
+                              Dictionary<string,string>indiceCabecalho, int iniciallinha = 1, int numPlanilha = 1)
+        {
+            using (var workbook = new XLWorkbook(caminhoArq))
+            {
+                List<ProdutoModel> produtosExtraidos = new List<ProdutoModel>();
+
+                var planilha = workbook.Worksheet(numPlanilha);
+                var cabecalhos = planilha.Row(iniciallinha).
                                           Cells().
                                           Select(c => c.Value.ToString()).
                                           ToList();
 
-                var indices = new Dictionary<string, int>
-                {
-                    ["Produto"] = cabecalhos.IndexOf("Produto") + 1,
-                    ["Lote"] = cabecalhos.IndexOf("Lote") + 1,
-                    ["Data Validad"] = cabecalhos.IndexOf("Data Validad") + 1,
-                    ["Saldo 1a.U.M."] = cabecalhos.IndexOf("Saldo 1a.U.M.") + 1,
-                };
+                var indices = new Dictionary<string, int>();
 
-                foreach(var linha in planilha.RangeUsed().RowsUsed().Skip(2))
+                foreach (var campo in indiceCabecalho)
                 {
-                    var produto = new ProdutoModel(
-                          0,
-                          linha.Cell(indices["Produto"]).GetString(),
-                          linha.Cell(indices["Lote"]).GetString(),
-                          linha.Cell(indices["Data Validad"]).GetString(),
-                          int.TryParse(linha.Cell(indices["Saldo 1a.U.M."]).GetString(), out int resultado) ? resultado : 1
-                    );
+                    var nomeCabecalho = campo.Value;
+                    var indice = cabecalhos.IndexOf(nomeCabecalho);
 
-                        var produtoExistente = produtosExtraidos.FirstOrDefault(p => p.Codigo == produto.Codigo
-                                                                                && p.Lote == produto.Lote);
-                        if(produtoExistente != null)
-                        {
-                            produtoExistente.Quantidade = produto.Quantidade >  1 ? 
-                                                          produtoExistente.Quantidade + 
-                                                          produto.Quantidade : 
-                                                          produtoExistente.Quantidade++;
-                        }
-                        else
-                        {
-                            produtosExtraidos.Add(produto);
-                        }
+                    if (indice >= 0)
+                        indices[campo.Key] = indice + 1;
                 }
 
+                foreach (var linha in planilha.RangeUsed().RowsUsed().Skip(iniciallinha))
+                {
+                    var codigo = linha.Cell(indices["Codigo"]).GetString();
+                    var lote = linha.Cell(indices["Lote"]).GetString();
+                    var validade = linha.Cell(indices["Validade"]).GetString();
+                    var saldoTexto = linha.Cell(indices["Quantidade"]).GetString();
+
+                    int quantidade = int.TryParse(saldoTexto, out int q) ? q : 0;
+
+                    var produto = new ProdutoModel(0, codigo, lote, validade, quantidade);
+
+                    var produtoExistente = produtosExtraidos.FirstOrDefault(p => p.Codigo == produto.Codigo
+                                                                            && p.Lote == produto.Lote);
+
+                    if (produtoExistente != null)
+                    {
+                        produtoExistente.Quantidade += (produto.Quantidade > 1 ? produto.Quantidade : 1);
+                    }
+                    else
+                    {
+                        produtosExtraidos.Add(produto);
+                    }
+
+                }
+
+                return produtosExtraidos;
             }
-
-             GerarRelatorio(produtos);
-        }
-
-        private void GerarRelatorio(List<ProdutoModel> produtos)
+        }        
+        
+        private void GerarRelatorio(List<ProdutoModel> produtos, Dictionary<string, string> cabeçalho, bool relatorioFinal = false)
         {
             var caminhoArq = FileHelper.CarregarArquivo();
-            Path.Combine(caminhoArq, $"Relatorio_{DateTime.Today.ToString("yyyy-MM-dd")}.xlsx");
+            var arquivo = Path.Combine(caminhoArq, $"Relatorio_{DateTime.Today.ToString("yyyy-MM-dd")}.xlsx");
 
             using (var workbook = new XLWorkbook())
             {
@@ -113,10 +134,12 @@ namespace ContagemEstoque.Services
 
                 }
 
-                planilha.Columns().AdjustToContents();
-                workbook.SaveAs(caminhoArq);
+                planilha.ColumnCount()
 
-                Process.Start(caminhoArq);
+                planilha.Columns().AdjustToContents();
+                workbook.SaveAs(arquivo);
+
+                Process.Start(arquivo);
 
             }
                 
