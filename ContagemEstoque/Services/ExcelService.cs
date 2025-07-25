@@ -26,10 +26,35 @@ namespace ContagemEstoque.Services
             };
 
             produtosExtraidos = LerDados(caminhoArq, produtos, mapeamento, 2, 2);
-            GerarRelatorio(produtos, mapeamento, true);
 
+            caminhoArq = FileHelper.CarregarArquivo();
+            var arquivo = Path.Combine(caminhoArq, $"Relatorio_{DateTime.Today.ToString("yyyy-MM-dd")}.xlsx");
+
+            using (var workbook = new XLWorkbook())
+            {
+                var planilha = workbook.Worksheets.Add("Relatorio");
+
+                GerarPlanilha(produtos, planilha, true);
+                workbook.SaveAs(arquivo);
+
+                Process.Start(arquivo);
+            }
         }
 
+        public void SalvarContagem(string caminhoArq, List<ProdutoModel> produtos)
+        {
+            var arquivo = Path.Combine(caminhoArq, $"Contagem_{DateTime.Today.ToString("dd-MM-yyyy")}.xlsx");
+
+            using (var workbook = new XLWorkbook())
+            {
+                var planilha = workbook.Worksheets.Add("Relatorio");
+
+                GerarPlanilha(produtos, planilha);
+                workbook.SaveAs(arquivo);
+
+                Process.Start(arquivo);
+            }
+        }
         private List<ProdutoModel> LerDados(string caminhoArq, List<ProdutoModel> produtos,
                               Dictionary<string,string>indiceCabecalho, int iniciallinha = 1, int numPlanilha = 1)
         {
@@ -83,66 +108,44 @@ namespace ContagemEstoque.Services
             }
         }        
         
-        private void GerarRelatorio(List<ProdutoModel> produtos, Dictionary<string, string> cabeçalho, bool relatorioFinal = false)
+        private void GerarPlanilha(List<ProdutoModel> produtos, IXLWorksheet planilha, bool analise = false)
         {
-            var caminhoArq = FileHelper.CarregarArquivo();
-            var arquivo = Path.Combine(caminhoArq, $"Relatorio_{DateTime.Today.ToString("yyyy-MM-dd")}.xlsx");
+            planilha.Cell(1, 1).Value = "Codigo";
+            planilha.Cell(1, 2).Value = "Lote";
+            planilha.Cell(1, 3).Value = "Data Validade";
+            planilha.Cell(1, 4).Value = "Qtde Estoque";
 
-            using (var workbook = new XLWorkbook())
+            if (analise)
             {
-                var planilha = workbook.Worksheets.Add("Relatorio");
-
-                planilha.Cell(1, 1).Value = "Codigo";
-                planilha.Cell(1, 2).Value = "Lote";
-                planilha.Cell(1, 3).Value = "Data Validade";
-                planilha.Cell(1, 4).Value = "Qtde Estoque";
                 planilha.Cell(1, 5).Value = "Qtde Sistema";
                 planilha.Cell(1, 6).Value = "Resultado";
+            }
 
-                for(int i = 0;  i < produtos.Count; i++)
+            for(int i = 0; i < produtos.Count; i++)
+            {
+                var produto = produtos[i];
+                int linha = i + 2;
+
+                planilha.Cell(linha, 1).Value = produto.Codigo;
+                planilha.Cell(linha, 2).Value = produto.Lote;
+                planilha.Cell(linha, 3).Value = produto.DataValidade;
+                planilha.Cell(linha, 4).Value = produto.Quantidade;
+
+                if (analise)
                 {
-                    var produto = produtos[i];
-                    int linha = i + 2;
+                    var produtoExistente = produtosExtraidos.FirstOrDefault(p => p.Codigo == produto.Codigo 
+                                                                            && p.Lote == produto.Lote);
+                    int qtdSistema = produtoExistente?.Quantidade ?? 0;
+                    int diferenca = produto.Quantidade - qtdSistema;
 
-                    var encontrarProduto = produtosExtraidos.FirstOrDefault(p => p.Codigo == produto.Codigo
-                                                    && p.Lote == produto.Lote);
-
-                    if(encontrarProduto != null)
-                    {
-                        planilha.Cell(linha, 1).Value = produto.Codigo;
-                        planilha.Cell(linha, 2).Value = produto.Lote;
-                        planilha.Cell(linha, 3).Value = produto.DataValidade;
-                        planilha.Cell(linha, 4).Value = produto.Quantidade;
-                        planilha.Cell(linha, 5).Value = encontrarProduto.Quantidade;
-
-                        planilha.Cell(linha, 6).Value =
-                            produto.Quantidade - encontrarProduto.Quantidade != 0 ?
-                            (produto.Quantidade - encontrarProduto.Quantidade < 0 ?
-                            $"Falta no estoque: {(produto.Quantidade - encontrarProduto.Quantidade)* - 1}" :
-                            $"Falta no sistema: {produto.Quantidade - encontrarProduto.Quantidade}") :
-                            "OK";
-                    }
-                    else
-                    {
-                        planilha.Cell(linha, 1).Value = produto.Codigo;
-                        planilha.Cell(linha, 2).Value = produto.Lote;
-                        planilha.Cell(linha, 3).Value = produto.DataValidade;
-                        planilha.Cell(linha, 4).Value = produto.Quantidade;
-                        planilha.Cell(linha, 5).Value = 0;
-                        planilha.Cell(linha, 6).Value = $"Falta no sistema: {produto.Quantidade}";
-            }
-
+                    planilha.Cell(linha, 5).Value = qtdSistema;
+                    planilha.Cell(linha, 6).Value =
+                        diferenca == 0 ? "OK" :
+                        diferenca < 0 ? $"Falta no estoque {-diferenca}" :
+                        $"Falta no Sistema: {diferenca}";
                 }
-
-                planilha.ColumnCount();
-
-                planilha.Columns().AdjustToContents();
-                workbook.SaveAs(arquivo);
-
-                Process.Start(arquivo);
-
             }
-                
+            planilha.Columns().AdjustToContents();
         }
     }
 }

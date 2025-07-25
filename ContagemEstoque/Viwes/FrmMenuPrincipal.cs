@@ -136,5 +136,11 @@ namespace ContagemEstoque
             frmAddFilePathSave frmAddFilePathSave = new frmAddFilePathSave();
             frmAddFilePathSave.ShowDialog();
         }
+
+        private void SalvarContagem(object sender, EventArgs e)
+        {
+            string arquivoExtrairDados = FileHelper.SelecionarArquivo();
+            _excelService.SalvarContagem(arquivoExtrairDados, produtoContados);
+        }
     }
 }

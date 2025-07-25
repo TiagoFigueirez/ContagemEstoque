@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblSubTitle = new System.Windows.Forms.Label();
@@ -39,6 +39,7 @@
             this.btnZerarContagem = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.dgvProdutos = new System.Windows.Forms.DataGridView();
             this.btnExcluir = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnSalvarRelatorio = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLoadFrmFilePathSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
@@ -122,7 +123,7 @@
             // 
             // btnGerarRelatorio
             // 
-            this.btnGerarRelatorio.Location = new System.Drawing.Point(41, 248);
+            this.btnGerarRelatorio.Location = new System.Drawing.Point(42, 237);
             this.btnGerarRelatorio.Name = "btnGerarRelatorio";
             this.btnGerarRelatorio.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
             this.btnGerarRelatorio.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(38)))), ((int)(((byte)(127)))));
@@ -173,7 +174,7 @@
             // 
             // btnZerarContagem
             // 
-            this.btnZerarContagem.Location = new System.Drawing.Point(316, 248);
+            this.btnZerarContagem.Location = new System.Drawing.Point(317, 237);
             this.btnZerarContagem.Name = "btnZerarContagem";
             this.btnZerarContagem.OverrideDefault.Back.Color1 = System.Drawing.Color.White;
             this.btnZerarContagem.OverrideDefault.Back.Color2 = System.Drawing.Color.White;
@@ -253,14 +254,14 @@
             this.dgvProdutos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProdutos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvProdutos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProdutos.ColumnHeadersHeight = 54;
             this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvProdutos.EnableHeadersVisualStyles = false;
@@ -271,14 +272,14 @@
             this.dgvProdutos.Name = "dgvProdutos";
             this.dgvProdutos.ReadOnly = true;
             this.dgvProdutos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProdutos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProdutos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvProdutos.RowHeadersVisible = false;
             this.dgvProdutos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -336,6 +337,19 @@
             this.btnExcluir.Values.Text = "EXCLUIR PRODUTO";
             this.btnExcluir.Click += new System.EventHandler(this.ExcluirProduto);
             // 
+            // btnSalvarRelatorio
+            // 
+            this.btnSalvarRelatorio.FlatAppearance.BorderSize = 0;
+            this.btnSalvarRelatorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalvarRelatorio.Image = global::ContagemEstoque.Properties.Resources.icons8_save_30;
+            this.btnSalvarRelatorio.Location = new System.Drawing.Point(1160, 0);
+            this.btnSalvarRelatorio.Name = "btnSalvarRelatorio";
+            this.btnSalvarRelatorio.Size = new System.Drawing.Size(46, 36);
+            this.btnSalvarRelatorio.TabIndex = 9;
+            this.btnSalvarRelatorio.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnSalvarRelatorio.UseVisualStyleBackColor = true;
+            this.btnSalvarRelatorio.Click += new System.EventHandler(this.SalvarContagem);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ContagemEstoque.Properties.Resources.Checking_boxes_amico;
@@ -366,6 +380,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1294, 665);
+            this.Controls.Add(this.btnSalvarRelatorio);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnLoadFrmFilePathSave);
             this.Controls.Add(this.btnExcluir);
@@ -410,6 +425,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnExcluir;
         private System.Windows.Forms.Button btnLoadFrmFilePathSave;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnSalvarRelatorio;
     }
 }
 

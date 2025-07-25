@@ -66,7 +66,7 @@
             // 
             // btnSelecionarPasta
             // 
-            this.btnSelecionarPasta.Location = new System.Drawing.Point(180, 145);
+            this.btnSelecionarPasta.Location = new System.Drawing.Point(183, 130);
             this.btnSelecionarPasta.Name = "btnSelecionarPasta";
             this.btnSelecionarPasta.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
             this.btnSelecionarPasta.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(38)))), ((int)(((byte)(127)))));
@@ -120,7 +120,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(583, 255);
+            this.ClientSize = new System.Drawing.Size(583, 216);
             this.Controls.Add(this.btnSelecionarPasta);
             this.Controls.Add(this.lblShowPath);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
