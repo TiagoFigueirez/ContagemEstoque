@@ -27,7 +27,7 @@ namespace ContagemEstoque.Helpers
         public static string CarregarRelatorioExistente()
         {
             string caminhoArq = CarregarArquivo();
-            string arq = Path.Combine(caminhoArq, $"Relatorio_{DateTime.Today.ToString("yyyy-MM-dd")}.xlsx");
+            string arq = Path.Combine(caminhoArq, $"Contagem_{DateTime.Today.ToString("dd-MM-yyyy")}.xlsx");
 
             if (File.Exists(arq))
             {

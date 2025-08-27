@@ -6,6 +6,7 @@ using ContagemEstoque.Services.Interface;
 using ContagemEstoque.Viwes;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace ContagemEstoque
@@ -29,6 +30,13 @@ namespace ContagemEstoque
         private void FrmMenuPrincipal_Load(object sender, System.EventArgs e)
         {
             GridViewHelper.FormatarGridView(dgvProdutos);
+            string filePath = FileHelper.CarregarRelatorioExistente();
+
+            if (filePath != null)
+            {
+                produtoContados = _excelService.CarregarRelatorio(filePath);
+                GridViewHelper.CarregarGridView(dgvProdutos,produtoContados);
+            }
         }
 
         private void LerCodigoBarras(object sender, System.Windows.Forms.KeyPressEventArgs e)
@@ -80,8 +88,14 @@ namespace ContagemEstoque
         {
             string arquivoExtrairDados = FileHelper.SelecionarArquivo();
 
-            _excelService.ExtrairDadosEstoque(arquivoExtrairDados, produtoContados);
+            var relatorioSalvo = FileHelper.CarregarRelatorioExistente();
 
+            if(relatorioSalvo != null)
+            {
+                File.Delete(relatorioSalvo);
+            }
+
+                _excelService.RelatorioFinal(arquivoExtrairDados, produtoContados);
         }
 
         private void ZerarContagem(object sender, EventArgs e)
@@ -139,7 +153,7 @@ namespace ContagemEstoque
 
         private void SalvarContagem(object sender, EventArgs e)
         {
-            string arquivoExtrairDados = FileHelper.SelecionarArquivo();
+            string arquivoExtrairDados = FileHelper.CarregarArquivo();
             _excelService.SalvarContagem(arquivoExtrairDados, produtoContados);
         }
     }

@@ -14,7 +14,7 @@ namespace ContagemEstoque.Services
     {
         public List<ProdutoModel> produtosExtraidos = new List<ProdutoModel>();
 
-        public void ExtrairDadosEstoque(string caminhoArq, List<ProdutoModel> produtos)
+        public void RelatorioFinal(string caminhoArq, List<ProdutoModel> produtos)
         {
             
             var mapeamento = new Dictionary<string, string>
@@ -25,7 +25,7 @@ namespace ContagemEstoque.Services
                 ["Quantidade"] = "Saldo 1a.U.M."
             };
 
-            produtosExtraidos = LerDados(caminhoArq, produtos, mapeamento, 2, 2);
+            produtosExtraidos = LerDados(caminhoArq, mapeamento, 2, 2);
 
             caminhoArq = FileHelper.CarregarArquivo();
             var arquivo = Path.Combine(caminhoArq, $"Relatorio_{DateTime.Today.ToString("yyyy-MM-dd")}.xlsx");
@@ -39,6 +39,23 @@ namespace ContagemEstoque.Services
 
                 Process.Start(arquivo);
             }
+        }
+
+        public List<ProdutoModel> CarregarRelatorio(string caminhoArq)
+        {
+
+            var mapeamento = new Dictionary<string, string>
+            {
+                ["Codigo"] = "Codigo",
+                ["Lote"] = "Lote",
+                ["Validade"] = "Data Validade",
+                ["Quantidade"] = "Qtde Estoque"
+            };
+
+            caminhoArq = FileHelper.CarregarRelatorioExistente();
+            produtosExtraidos = LerDados(caminhoArq, mapeamento);
+
+            return produtosExtraidos;
         }
 
         public void SalvarContagem(string caminhoArq, List<ProdutoModel> produtos)
@@ -55,8 +72,8 @@ namespace ContagemEstoque.Services
                 Process.Start(arquivo);
             }
         }
-        private List<ProdutoModel> LerDados(string caminhoArq, List<ProdutoModel> produtos,
-                              Dictionary<string,string>indiceCabecalho, int iniciallinha = 1, int numPlanilha = 1)
+        private List<ProdutoModel> LerDados(string caminhoArq, Dictionary<string,string> indiceCabecalho, 
+                                            int iniciallinha = 1, int numPlanilha = 1)
         {
             using (var workbook = new XLWorkbook(caminhoArq))
             {

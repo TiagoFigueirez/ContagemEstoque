@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblSubTitle = new System.Windows.Forms.Label();
@@ -70,7 +70,7 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblTitle.Location = new System.Drawing.Point(42, 42);
+            this.lblTitle.Location = new System.Drawing.Point(0, 42);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(588, 65);
             this.lblTitle.TabIndex = 0;
@@ -81,7 +81,7 @@
             this.lblSubTitle.AutoSize = true;
             this.lblSubTitle.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
-            this.lblSubTitle.Location = new System.Drawing.Point(58, 122);
+            this.lblSubTitle.Location = new System.Drawing.Point(15, 121);
             this.lblSubTitle.Name = "lblSubTitle";
             this.lblSubTitle.Size = new System.Drawing.Size(540, 30);
             this.lblSubTitle.TabIndex = 1;
@@ -89,9 +89,9 @@
             // 
             // txtCodigoDeBarras
             // 
-            this.txtCodigoDeBarras.Location = new System.Drawing.Point(31, 172);
+            this.txtCodigoDeBarras.Location = new System.Drawing.Point(9, 172);
             this.txtCodigoDeBarras.Name = "txtCodigoDeBarras";
-            this.txtCodigoDeBarras.Size = new System.Drawing.Size(612, 43);
+            this.txtCodigoDeBarras.Size = new System.Drawing.Size(567, 43);
             this.txtCodigoDeBarras.StateActive.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
             this.txtCodigoDeBarras.StateActive.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
             this.txtCodigoDeBarras.StateActive.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -123,7 +123,7 @@
             // 
             // btnGerarRelatorio
             // 
-            this.btnGerarRelatorio.Location = new System.Drawing.Point(42, 237);
+            this.btnGerarRelatorio.Location = new System.Drawing.Point(20, 237);
             this.btnGerarRelatorio.Name = "btnGerarRelatorio";
             this.btnGerarRelatorio.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
             this.btnGerarRelatorio.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(38)))), ((int)(((byte)(127)))));
@@ -174,7 +174,7 @@
             // 
             // btnZerarContagem
             // 
-            this.btnZerarContagem.Location = new System.Drawing.Point(317, 237);
+            this.btnZerarContagem.Location = new System.Drawing.Point(296, 237);
             this.btnZerarContagem.Name = "btnZerarContagem";
             this.btnZerarContagem.OverrideDefault.Back.Color1 = System.Drawing.Color.White;
             this.btnZerarContagem.OverrideDefault.Back.Color2 = System.Drawing.Color.White;
@@ -254,14 +254,14 @@
             this.dgvProdutos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProdutos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvProdutos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(65)))), ((int)(((byte)(127)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProdutos.ColumnHeadersHeight = 54;
             this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvProdutos.EnableHeadersVisualStyles = false;
@@ -272,18 +272,19 @@
             this.dgvProdutos.Name = "dgvProdutos";
             this.dgvProdutos.ReadOnly = true;
             this.dgvProdutos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProdutos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProdutos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProdutos.RowHeadersVisible = false;
+            this.dgvProdutos.RowHeadersWidth = 51;
             this.dgvProdutos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProdutos.Size = new System.Drawing.Size(612, 282);
+            this.dgvProdutos.Size = new System.Drawing.Size(570, 282);
             this.dgvProdutos.TabIndex = 5;
             // 
             // btnExcluir
@@ -342,7 +343,7 @@
             this.btnSalvarRelatorio.FlatAppearance.BorderSize = 0;
             this.btnSalvarRelatorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalvarRelatorio.Image = global::ContagemEstoque.Properties.Resources.icons8_save_30;
-            this.btnSalvarRelatorio.Location = new System.Drawing.Point(1160, 0);
+            this.btnSalvarRelatorio.Location = new System.Drawing.Point(1106, 0);
             this.btnSalvarRelatorio.Name = "btnSalvarRelatorio";
             this.btnSalvarRelatorio.Size = new System.Drawing.Size(46, 36);
             this.btnSalvarRelatorio.TabIndex = 9;
@@ -353,9 +354,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ContagemEstoque.Properties.Resources.Checking_boxes_amico;
-            this.pictureBox1.Location = new System.Drawing.Point(649, 42);
+            this.pictureBox1.Location = new System.Drawing.Point(591, 42);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(633, 623);
+            this.pictureBox1.Size = new System.Drawing.Size(604, 589);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
@@ -366,7 +367,7 @@
             this.btnLoadFrmFilePathSave.FlatAppearance.BorderSize = 0;
             this.btnLoadFrmFilePathSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLoadFrmFilePathSave.Image = global::ContagemEstoque.Properties.Resources.fileIcon;
-            this.btnLoadFrmFilePathSave.Location = new System.Drawing.Point(1212, 0);
+            this.btnLoadFrmFilePathSave.Location = new System.Drawing.Point(1145, 0);
             this.btnLoadFrmFilePathSave.Name = "btnLoadFrmFilePathSave";
             this.btnLoadFrmFilePathSave.Size = new System.Drawing.Size(46, 36);
             this.btnLoadFrmFilePathSave.TabIndex = 7;
@@ -379,7 +380,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1294, 665);
+            this.ClientSize = new System.Drawing.Size(1215, 665);
             this.Controls.Add(this.btnSalvarRelatorio);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnLoadFrmFilePathSave);

@@ -25,10 +25,6 @@ namespace ContagemEstoque.Viwes
                 MessageBox.Show("Caminho selecionado com sucesso !", "Sucesso !");
                 TextoForLblShowPath();
             }
-            else
-            {
-                MessageBox.Show("Falha ao selecionar a pasta tente novamente !", "Falha !");
-            }
         }
 
         private void TextoForLblShowPath()
