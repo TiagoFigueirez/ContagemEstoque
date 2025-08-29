@@ -43,16 +43,18 @@ namespace ContagemEstoque
         {
             try
             {
-                if (e.KeyChar == (char)13)
+                if (e.KeyChar == (char)Keys.Enter)
                 {
                     var produto = _produtoService.TratarCodigoBarras(codigo, out string erro, produtoContados.Count);
-
                     txtCodigoDeBarras.Clear();
                     codigo = "";
+                    codigo.Trim();
 
                     if (produto != null)
                     {
                         var produtoExistente = _produtoService.ConsultarProduto(produtoContados, produto);
+
+
 
                         if (produtoExistente == null)
                         {
