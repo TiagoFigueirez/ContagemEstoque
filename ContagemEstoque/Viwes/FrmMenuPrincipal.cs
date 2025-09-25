@@ -178,7 +178,7 @@ namespace ContagemEstoque
             if (filePath != null)
             {
                 var produtosSalvos = _excelService.CarregarRelatorio(filePath);
-                produtoContados.AddRange(produtosSalvos);
+                produtoContados = ProdutoHelper.TratarProdutosPuxados(produtoContados, produtosSalvos);
                 produtoContados = ProdutoHelper.RenumerarId(produtoContados);
                 GridViewHelper.CarregarGridView(dgvProdutos, produtoContados);
             }
