@@ -39,6 +39,7 @@
             this.btnZerarContagem = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.dgvProdutos = new System.Windows.Forms.DataGridView();
             this.btnExcluir = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnIncluirContagemSalva = new System.Windows.Forms.Button();
             this.btnSalvarRelatorio = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLoadFrmFilePathSave = new System.Windows.Forms.Button();
@@ -338,6 +339,19 @@
             this.btnExcluir.Values.Text = "EXCLUIR PRODUTO";
             this.btnExcluir.Click += new System.EventHandler(this.ExcluirProduto);
             // 
+            // btnIncluirContagemSalva
+            // 
+            this.btnIncluirContagemSalva.FlatAppearance.BorderSize = 0;
+            this.btnIncluirContagemSalva.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIncluirContagemSalva.Image = global::ContagemEstoque.Properties.Resources.icons8_download_48;
+            this.btnIncluirContagemSalva.Location = new System.Drawing.Point(1064, 3);
+            this.btnIncluirContagemSalva.Name = "btnIncluirContagemSalva";
+            this.btnIncluirContagemSalva.Size = new System.Drawing.Size(46, 36);
+            this.btnIncluirContagemSalva.TabIndex = 10;
+            this.btnIncluirContagemSalva.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnIncluirContagemSalva.UseVisualStyleBackColor = true;
+            this.btnIncluirContagemSalva.Click += new System.EventHandler(this.IncluirContagemSalva);
+            // 
             // btnSalvarRelatorio
             // 
             this.btnSalvarRelatorio.FlatAppearance.BorderSize = 0;
@@ -381,6 +395,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1215, 665);
+            this.Controls.Add(this.btnIncluirContagemSalva);
             this.Controls.Add(this.btnSalvarRelatorio);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnLoadFrmFilePathSave);
@@ -427,6 +442,7 @@
         private System.Windows.Forms.Button btnLoadFrmFilePathSave;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnSalvarRelatorio;
+        private System.Windows.Forms.Button btnIncluirContagemSalva;
     }
 }
 

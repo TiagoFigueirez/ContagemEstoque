@@ -6,7 +6,6 @@ using ContagemEstoque.Services.Interface;
 using ContagemEstoque.Viwes;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Windows.Forms;
 
 namespace ContagemEstoque
@@ -94,18 +93,26 @@ namespace ContagemEstoque
 
             if(relatorioSalvo != null)
             {
-                File.Delete(relatorioSalvo);
-            }
-
+               FileHelper.DeleteFile(relatorioSalvo);
                 _excelService.RelatorioFinal(arquivoExtrairDados, produtoContados);
+            }
+            else
+            {
+                return;
+            }              
         }
 
         private void ZerarContagem(object sender, EventArgs e)
         {
             if (produtoContados.Count > 0)
             {
-                DialogResult result = MessageBox.Show("Deseja realmente remover zerar a lista ?",
+                DialogResult result = MessageBox.Show("Deseja realmente zerar a lista ?",
                                                      "Atenção", MessageBoxButtons.YesNo);
+
+                var contagemSalva = FileHelper.VerificarArquivoSalvo($"Contagem_{DateTime.Today.ToString("dd-MM-yyyy")}.xlsx");
+
+                if(contagemSalva != null) 
+                        FileHelper.DeleteFile(contagemSalva);
 
                 if (result == DialogResult.Yes)
                 {
@@ -156,7 +163,26 @@ namespace ContagemEstoque
         private void SalvarContagem(object sender, EventArgs e)
         {
             string arquivoExtrairDados = FileHelper.CarregarArquivo();
-            _excelService.SalvarContagem(arquivoExtrairDados, produtoContados);
+            bool Save = _excelService.SalvarContagem(arquivoExtrairDados, produtoContados);
+
+            if (Save)
+            {
+                MessageBox.Show("Sua contagem foi salva", "Sucesso!");
+            }
+        }
+
+        private void IncluirContagemSalva(object sender, EventArgs e)
+        {
+            string filePath = FileHelper.CarregarRelatorioExistente();
+
+            if (filePath != null)
+            {
+                var produtosSalvos = _excelService.CarregarRelatorio(filePath);
+                produtoContados.AddRange(produtosSalvos);
+                produtoContados = ProdutoHelper.RenumerarId(produtoContados);
+                GridViewHelper.CarregarGridView(dgvProdutos, produtoContados);
+            }
+
         }
     }
 }

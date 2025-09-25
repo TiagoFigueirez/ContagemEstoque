@@ -13,11 +13,18 @@ namespace ContagemEstoque.Services
     public class ExcelService : IExcelService
     {
         public List<ProdutoModel> produtosExtraidos = new List<ProdutoModel>();
+        public Dictionary<string, string> mapeamento = new Dictionary<string, string>() {
+            ["Codigo"] = "Codigo",
+            ["Lote"] = "Lote",
+            ["Validade"] = "Data Validade",
+            ["Quantidade"] = "Qtde Estoque"
+        };
 
+        //este metodo e responsavel por emitir o relatorio com a analise do estoque em excel
         public void RelatorioFinal(string caminhoArq, List<ProdutoModel> produtos)
         {
             
-            var mapeamento = new Dictionary<string, string>
+            var mapeamentoRelatorioFinal = new Dictionary<string, string>
             {
                 ["Codigo"] = "Produto",
                 ["Lote"] = "Lote",
@@ -25,10 +32,10 @@ namespace ContagemEstoque.Services
                 ["Quantidade"] = "Saldo 1a.U.M."
             };
 
-            produtosExtraidos = LerDados(caminhoArq, mapeamento, 2, 2);
+            produtosExtraidos = LerDados(caminhoArq, mapeamentoRelatorioFinal, 2, 2);
 
             caminhoArq = FileHelper.CarregarArquivo();
-            var arquivo = Path.Combine(caminhoArq, $"Relatorio_{DateTime.Today.ToString("yyyy-MM-dd")}.xlsx");
+            var arquivo = Path.Combine(caminhoArq, $"Relatorio_{DateTime.Today.ToString("dd-MM-yyyy")}.xlsx");
 
             using (var workbook = new XLWorkbook())
             {
@@ -43,22 +50,13 @@ namespace ContagemEstoque.Services
 
         public List<ProdutoModel> CarregarRelatorio(string caminhoArq)
         {
-
-            var mapeamento = new Dictionary<string, string>
-            {
-                ["Codigo"] = "Codigo",
-                ["Lote"] = "Lote",
-                ["Validade"] = "Data Validade",
-                ["Quantidade"] = "Qtde Estoque"
-            };
-
             caminhoArq = FileHelper.CarregarRelatorioExistente();
             produtosExtraidos = LerDados(caminhoArq, mapeamento);
 
             return produtosExtraidos;
         }
 
-        public void SalvarContagem(string caminhoArq, List<ProdutoModel> produtos)
+        public bool SalvarContagem(string caminhoArq, List<ProdutoModel> produtos)
         {
             var arquivo = Path.Combine(caminhoArq, $"Contagem_{DateTime.Today.ToString("dd-MM-yyyy")}.xlsx");
 
@@ -69,7 +67,16 @@ namespace ContagemEstoque.Services
                 GerarPlanilha(produtos, planilha);
                 workbook.SaveAs(arquivo);
 
-                Process.Start(arquivo);
+                var arqSave = FileHelper.VerificarArquivoSalvo(arquivo);
+
+                if (arqSave != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
         private List<ProdutoModel> LerDados(string caminhoArq, Dictionary<string,string> indiceCabecalho, 
@@ -77,6 +84,7 @@ namespace ContagemEstoque.Services
         {
             using (var workbook = new XLWorkbook(caminhoArq))
             {
+                int id = 1;
                 List<ProdutoModel> produtosExtraidos = new List<ProdutoModel>();
 
                 var planilha = workbook.Worksheet(numPlanilha);
@@ -98,6 +106,7 @@ namespace ContagemEstoque.Services
 
                 foreach (var linha in planilha.RangeUsed().RowsUsed().Skip(iniciallinha))
                 {
+                   
                     var codigo = linha.Cell(indices["Codigo"]).GetString();
                     var lote = linha.Cell(indices["Lote"]).GetString();
                     var validade = linha.Cell(indices["Validade"]).GetString();
@@ -105,7 +114,8 @@ namespace ContagemEstoque.Services
 
                     int quantidade = int.TryParse(saldoTexto, out int q) ? q : 0;
 
-                    var produto = new ProdutoModel(0, codigo, lote, validade, quantidade);
+                    var produto = new ProdutoModel(id, codigo, lote, validade, quantidade);
+                    id++;
 
                     var produtoExistente = produtosExtraidos.FirstOrDefault(p => p.Codigo == produto.Codigo
                                                                             && p.Lote == produto.Lote);

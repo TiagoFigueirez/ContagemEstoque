@@ -83,6 +83,23 @@ namespace ContagemEstoque.Helpers
             }
         }
 
+        public static string VerificarArquivoSalvo(string filePath)
+        {
+            if (!File.Exists(filePath))
+            {
+                return null;
+            }
+            else
+            {
+                return filePath;
+            }
+        }
+
+        public static void DeleteFile(string filePath)
+        {
+            File.Delete(filePath);
+        }
+
         public static string CarregarArquivo()
         {
             try

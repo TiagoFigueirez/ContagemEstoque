@@ -16,7 +16,10 @@ namespace ContagemEstoque.Services
                 return null;
             }
 
-            ProdutoModel produtoTratado = new ProdutoModel(LastId + 1, produto[0].Trim(), produto[1], produto[2], 1);
+            ProdutoModel produtoTratado = new ProdutoModel(LastId + 1, 
+                                                           produto[0].Trim(), 
+                                                           produto[1], 
+                                                           produto[2], 1);
             return produtoTratado;
         }
 
